@@ -1,0 +1,6 @@
+<div *ngIf="currentProduct">
+    <h1>{{currentProduct.Name}} <span *ngIf="currentProduct.OrderCount > 5"> **POPULAR PRODUCT** </span></h1>
+    <h4>{{currentProduct.Description}}</h4>
+    <p>{{currentProduct.Name}} is ordered {{currentProduct.OrderCount}} times!</p>
+    <button class="btn btn-success" *ngIf="this.storageService.getUser().Username" (click)="this.orderProduct()">Order Now</button>
+</div>
