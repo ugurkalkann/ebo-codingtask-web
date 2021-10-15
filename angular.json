@@ -120,5 +120,8 @@
       }
     }
   },
-  "defaultProject": "ebo-codingtask-web"
+  "defaultProject": "ebo-codingtask-web",
+  "cli": {
+    "analytics": false
+  }
 }
