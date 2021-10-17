@@ -2,8 +2,9 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { OrderProductDetail, OrderProductRequest, Product } from '../_model/Product';
+import { environment } from 'src/environments/environment';
 
-const API_URL = 'https://localhost:44316/api/Products/';
+const API_URL = environment.api.url + 'Products/';
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 };
