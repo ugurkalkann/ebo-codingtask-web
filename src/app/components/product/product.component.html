@@ -11,7 +11,8 @@
             <h4>{{currentProduct.Description}}</h4>
             <p *ngIf="currentProduct.OrderCount === 0">{{currentProduct.Name}} is not ordered yet.</p>
             <p *ngIf="currentProduct.OrderCount > 0">
-                {{currentProduct.Name}} is ordered {{currentProduct.OrderCount}} time(s)! 
+                <span *ngIf="currentProduct.OrderCount === 1">{{currentProduct.Name}} is ordered once! </span>
+                <span *ngIf="currentProduct.OrderCount > 1">{{currentProduct.Name}} is ordered {{currentProduct.OrderCount}} times! </span>
                 <a [routerLink]="" (click)="this.getProductOrderHistory()">
                     <span *ngIf="!this.orderHistoryVisible">Show </span>
                     <span *ngIf="this.orderHistoryVisible">Hide </span>
