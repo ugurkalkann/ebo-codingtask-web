@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { OrderProductDetail, OrderProductRequest, Product } from 'src/app/_model/Product';
 import { ProductService } from 'src/app/_services/product.service';
 import { StorageService } from 'src/app/_services/storage.service';
@@ -15,7 +15,7 @@ export class ProductComponent implements OnInit {
   productOrderHistory: OrderProductDetail[];
   orderHistoryVisible: boolean = false;
 
-  constructor(private route: ActivatedRoute, private productService: ProductService, public storageService: StorageService) {
+  constructor(private route: ActivatedRoute, private router: Router, private productService: ProductService, public storageService: StorageService) {
     this.productId = this.route.snapshot.params.id; 
   }
 
@@ -26,7 +26,8 @@ export class ProductComponent implements OnInit {
           this.currentProduct = data;
         },
         err => {
-          $("#modalBody").html('There is an error while listing products. Check logs for more info');
+          console.log(err);
+          $("#modalBody").html('There is an error while displayin product detail. Check logs for more info');
           $('#infoModal').modal('toggle');
         }
       );
@@ -47,8 +48,15 @@ export class ProductComponent implements OnInit {
       },
       err => {
         console.log(err);
-        $("#modalBody").html('There is an error while listing products. Check logs for more info');
-        $('#infoModal').modal('toggle');
+        if(err && err.status === 401){
+          $("#modalBody").html('There is an error while ordering the product. Check logs for more info');
+          $('#infoModal').modal('toggle');
+
+          this.router.navigate(['/login']);
+        }else{
+          $("#modalBody").html('There is an error while ordering the product. Check logs for more info');
+          $('#infoModal').modal('toggle');
+        }
       }
     );
   }
@@ -64,7 +72,7 @@ export class ProductComponent implements OnInit {
         },
         err => {
           console.log(err);
-          $("#modalBody").html('There is an error while listing products. Check logs for more info');
+          $("#modalBody").html('There is an error while listing order history. Check logs for more info');
           $('#infoModal').modal('toggle');
         }
       );

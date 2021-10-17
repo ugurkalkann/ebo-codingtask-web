@@ -26,7 +26,7 @@ export class AppComponent implements OnInit {
   }
 
   logOut(){
-    this.storageService.signOut();
+    this.storageService.logOut();
     $("#modalBody").html('You successfully logged out!');
     $('#infoModal').modal('toggle');
   }

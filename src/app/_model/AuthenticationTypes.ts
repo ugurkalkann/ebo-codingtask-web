@@ -7,5 +7,6 @@ export interface User{
 export interface AuthResponse{
     IsSuccessful: boolean;
     Message: string;
+    AuthToken: string;
     UserInfo: User;
 }

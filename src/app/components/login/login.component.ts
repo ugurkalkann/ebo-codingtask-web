@@ -29,6 +29,9 @@ export class LoginComponent implements OnInit {
         if(data.IsSuccessful === true){
           //Fill SessionStorage
           this.storageService.saveUser(data.UserInfo);
+          console.log("token: ", data.AuthToken);
+          this.storageService.saveAuthToken(data.AuthToken);
+          
           this.router.navigate(['/products']);
         }else{
           $("#modalBody").html(data.Message);
@@ -37,7 +40,7 @@ export class LoginComponent implements OnInit {
       },
       err => {
         console.log(err);
-        $("#modalBody").html('There is an error while listing products. Check logs for more info');
+        $("#modalBody").html('There is an error while authentication. Check logs for more info');
         $('#infoModal').modal('toggle');
       }
     );
