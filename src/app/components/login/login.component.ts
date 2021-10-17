@@ -16,6 +16,9 @@ export class LoginComponent implements OnInit {
   constructor(private authService: AuthenticationService, private router: Router, private storageService: StorageService) { }
 
   ngOnInit(): void {
+    if(this.storageService.getUser().Username){
+      this.router.navigate(['/products']);
+    }
   }
 
   login(){
