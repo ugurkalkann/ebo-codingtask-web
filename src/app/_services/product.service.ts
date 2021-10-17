@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { OrderProductRequest, Product } from '../_model/Product';
+import { OrderProductDetail, OrderProductRequest, Product } from '../_model/Product';
 
-const API_URL = 'https://localhost:44316/api/';
+const API_URL = 'https://localhost:44316/api/Products/';
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 };
@@ -16,14 +16,18 @@ export class ProductService {
   constructor(private httpClient: HttpClient) { }
 
   getValues(): Observable<Product[]>{
-    return this.httpClient.get<Product[]>(API_URL + 'Products');
+    return this.httpClient.get<Product[]>(API_URL);
   }
 
   getProduct(id: number): Observable<Product>{
-    return this.httpClient.get<Product>(API_URL + 'Products/' + id);
+    return this.httpClient.get<Product>(API_URL + id);
+  }
+
+  getProductOrderHistory(productID: number): Observable<OrderProductDetail[]>{
+    return this.httpClient.get<OrderProductDetail[]>(API_URL + 'GetOrderProductHistory?productID=' + productID);
   }
 
   orderProduct(request: OrderProductRequest): Observable<Product>{
-    return this.httpClient.post<Product>(API_URL + 'Products/OrderProduct', request, httpOptions);
+    return this.httpClient.post<Product>(API_URL + 'OrderProduct', request, httpOptions);
   }
 }

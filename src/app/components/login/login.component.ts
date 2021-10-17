@@ -19,8 +19,6 @@ export class LoginComponent implements OnInit {
   }
 
   login(){
-    console.log(this.username);
-    console.log(this.password);
     let userInfo: User = {
       Username: this.username,
       Password: this.password

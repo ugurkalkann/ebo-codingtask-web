@@ -10,7 +10,24 @@
             <h1 id="productName">{{currentProduct.Name}}</h1>
             <h4>{{currentProduct.Description}}</h4>
             <p *ngIf="currentProduct.OrderCount === 0">{{currentProduct.Name}} is not ordered yet.</p>
-            <p *ngIf="currentProduct.OrderCount > 0">{{currentProduct.Name}} is ordered {{currentProduct.OrderCount}} time(s)!</p>
+            <p *ngIf="currentProduct.OrderCount > 0">
+                {{currentProduct.Name}} is ordered {{currentProduct.OrderCount}} time(s)! 
+                <a [routerLink]="" (click)="this.getProductOrderHistory()">
+                    <span *ngIf="!this.orderHistoryVisible">Show </span>
+                    <span *ngIf="this.orderHistoryVisible">Hide </span>
+                    Order History
+                </a>
+            </p>
+            <table *ngIf="orderHistoryVisible">
+                <tr>
+                    <th>User ID</th>
+                    <th>Order Date</th>
+                </tr>
+                <tr *ngFor="let order of productOrderHistory">
+                    <td>{{order.UserID}}</td>
+                    <td>{{order.OrderDate}}</td>
+                </tr>
+            </table>
             <div id="orderButton" *ngIf="this.storageService.getUser().Username">
                 <hr>
                 <button class="btn btn-lg btn-success" (click)="this.orderProduct()">Order Now</button>
