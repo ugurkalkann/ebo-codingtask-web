@@ -49,7 +49,7 @@ export class ProductComponent implements OnInit {
       err => {
         console.log(err);
         if(err && err.status === 401){
-          $("#modalBody").html('There is an error while ordering the product. Check logs for more info');
+          $("#modalBody").html('Unauthorized access. Please log in.');
           $('#infoModal').modal('toggle');
 
           this.router.navigate(['/login']);
