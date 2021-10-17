@@ -13,11 +13,11 @@
       </ul>
       <form class="form-inline my-2 my-lg-0">
         <div *ngIf="!this.storageService.getUser().Username">
-          <a [routerLink]="[ '/login' ]" class="btn btn-warning">Login</a>
+          <a id="loginButton" [routerLink]="[ '/login' ]" class="btn btn-sm btn-warning">Login</a>
         </div>
         <div *ngIf="this.storageService.getUser().Username">
-          <span style="color: white;">Welcome, {{this.storageService.getUser().Username}}</span>
-          <a class="btn btn-danger" style="margin-left: 10px;" (click)="logOut()">Logout</a>
+          <span style="color: white;">Welcome, <i>{{this.storageService.getUser().Username}}</i></span>
+          <a id="logoutButton" class="btn btn-sm" (click)="logOut()">Logout</a>
         </div>
       </form>
     </div>

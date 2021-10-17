@@ -1,0 +1,11 @@
+#logoutButton{
+    margin-left: 10px; 
+    font-weight: bold;
+    color: white; 
+    background-color: gray; 
+    border-color: gray;
+}
+
+#loginButton{
+    font-weight: bold;
+}
