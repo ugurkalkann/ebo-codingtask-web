@@ -29,7 +29,7 @@ export class LoginComponent implements OnInit {
         if(data.IsSuccessful === true){
           //Fill SessionStorage
           this.storageService.saveUser(data.UserInfo);
-          console.log("token: ", data.AuthToken);
+          //console.log("token: ", data.AuthToken);
           this.storageService.saveAuthToken(data.AuthToken);
           
           this.router.navigate(['/products']);
