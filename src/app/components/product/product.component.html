@@ -26,7 +26,7 @@
                 </tr>
                 <tr *ngFor="let order of productOrderHistory">
                     <td>{{order.UserID}}</td>
-                    <td>{{order.OrderDate | date:'longTime'}}</td>
+                    <td>{{order.OrderDate | date:'medium'}}</td>
                 </tr>
             </table>
             <div id="orderButton" *ngIf="this.storageService.getUser().Username">
