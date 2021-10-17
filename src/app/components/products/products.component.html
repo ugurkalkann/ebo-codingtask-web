@@ -1,7 +1,12 @@
 
   <h2>Product List</h2>
-  <ul>
-    <li *ngFor="let value of values">
-      <a [routerLink]="[ '/product', value.ProductID ]">{{value.Name}}</a>
-    </li>
-  </ul>
+  <table style="border-radius:1px">
+    <tr>
+      <th>Product Name</th>
+      <th>Description</th>
+    </tr>
+    <tr *ngFor="let product of products">
+      <td><a [routerLink]="[ '/product', product.ProductID ]">{{product.Name}}</a></td>
+      <td>{{product.Description}}</td>
+    </tr>
+  </table>
