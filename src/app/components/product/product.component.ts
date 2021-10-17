@@ -43,6 +43,7 @@ export class ProductComponent implements OnInit {
         this.currentProduct = data;
         $("#modalBody").html('You just bought the ' + this.currentProduct.Name);
         $('#infoModal').modal('toggle');
+        this.orderHistoryVisible = false;
       },
       err => {
         console.log(err);
