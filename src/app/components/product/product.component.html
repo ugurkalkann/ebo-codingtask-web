@@ -1,6 +1,26 @@
-<div *ngIf="currentProduct">
-    <h1>{{currentProduct.Name}} <span *ngIf="currentProduct.OrderCount > 5"> **POPULAR PRODUCT** </span></h1>
-    <h4>{{currentProduct.Description}}</h4>
-    <p>{{currentProduct.Name}} is ordered {{currentProduct.OrderCount}} times!</p>
-    <button class="btn btn-success" *ngIf="this.storageService.getUser().Username" (click)="this.orderProduct()">Order Now</button>
+<div class="row">
+    <div id="productImg" class="col-md-4 col-sm-12">
+        <img src="/assets/img/default-store.jpg" width="100%" />
+    </div>
+    <div id="productInfo" class="col-md-8 col-sm-12">
+        <div *ngIf="currentProduct">
+            <div id="popularProduct" *ngIf="currentProduct.OrderCount > 5">
+                <h1>* POPULAR PRODUCT *</h1>
+            </div>
+            <h1 id="productName">{{currentProduct.Name}}</h1>
+            <h4>{{currentProduct.Description}}</h4>
+            <p *ngIf="currentProduct.OrderCount === 0">{{currentProduct.Name}} is not ordered yet.</p>
+            <p *ngIf="currentProduct.OrderCount > 0">{{currentProduct.Name}} is ordered {{currentProduct.OrderCount}} time(s)!</p>
+            <div id="orderButton" *ngIf="this.storageService.getUser().Username">
+                <hr>
+                <button class="btn btn-lg btn-success" (click)="this.orderProduct()">Order Now</button>
+            </div>
+        </div>
+        <div *ngIf="!currentProduct">
+            <h2>PRODUCT NOT FOUND! <a [routerLink]="[ '/products' ]">Go Back</a></h2>
+        </div>
+    </div>
 </div>
+
+
+

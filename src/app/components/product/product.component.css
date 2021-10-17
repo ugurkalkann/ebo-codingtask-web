@@ -1,0 +1,32 @@
+.row {
+  font: 10pt Tahoma, Verdana;
+  background-color: #e7e7e7;
+  padding: 0;
+}
+
+#productInfo {
+  /*text-align: center;*/
+  padding: 10px;
+}
+
+#orderButton {
+  margin: 10%;
+  text-align: right;
+}
+
+#productName {
+  font-weight: bold;
+}
+
+#popularProduct {
+  animation: blinker 1s linear infinite;
+  text-align: center;
+  color: green;
+  font-weight: bold;
+}
+
+@keyframes blinker {
+  50% {
+    opacity: 0;
+  }
+}
