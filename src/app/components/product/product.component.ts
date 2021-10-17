@@ -51,7 +51,8 @@ export class ProductComponent implements OnInit {
         if(err && err.status === 401){
           $("#modalBody").html('Unauthorized access. Please log in.');
           $('#infoModal').modal('toggle');
-
+          
+          this.storageService.logOut();
           this.router.navigate(['/login']);
         }else{
           $("#modalBody").html('There is an error while ordering the product. Check logs for more info');
